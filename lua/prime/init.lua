@@ -1,2 +1,4 @@
 require("prime.remap")
-print("hello from dir")
+
+vim.opt.number = true
+vim.opt.relativenumber = true
