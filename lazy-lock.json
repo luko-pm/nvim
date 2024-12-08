@@ -1,6 +1,9 @@
 {
+  "LazyVim": { "branch": "main", "commit": "7ef2dfd3ba9a3dffaa8c57c1bb5e130b9aa74217" },
   "lazy.nvim": { "branch": "main", "commit": "014d1d6d78df4e58f962158e6e00261d8632612c" },
   "nvim-treesitter": { "branch": "master", "commit": "3b8dee4293567b0b9a87360842af14669f60dd13" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
+  "quick-scope": { "branch": "master", "commit": "4d35d3b2bc6794666353dcc241b2680bd560416f" },
+  "rose-pine": { "branch": "main", "commit": "07a887a7bef4aacea8c7caebaf8cbf808cdc7a8e" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" }
 }

@@ -1,3 +1,3 @@
 return{
-	{ "rose-pine/neovim", name = "rose-pine" },
+	'unblevable/quick-scope'
 }
