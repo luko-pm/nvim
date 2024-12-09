@@ -1,13 +1,9 @@
 return{
 	'unblevable/quick-scope',
-	{
-		"folke/snacks.nvim",
+	{"folke/snacks.nvim", -- No se que hace, lo instalé por que había un error por ahí
 		priority = 1000,
 		lazy = false,
 		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
 			bigfile = { enabled = true },
 			notifier = { enabled = true },
 			quickfile = { enabled = true },
@@ -15,4 +11,5 @@ return{
 			words = { enabled = true },
 		},
 	},
+	'tpope/vim-surround'
 }
