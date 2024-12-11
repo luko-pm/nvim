@@ -14,3 +14,8 @@ vim.opt.incsearch = true
 --vim.g.netrw_browse_split = 0
 --vim.g.netrw_banner = 0
 --vim.g.netrw_winsize = 25
+
+-- para quickscope (no me gusta tenerlo aqui pero tiene que ser antes de inicializar el plugin)
+vim.g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
+
+vim.opt.conceallevel = 1
