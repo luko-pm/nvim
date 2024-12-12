@@ -1,4 +1,4 @@
-local myLSPs = {"lua_ls", "pyright", "jdtls"} -- Lista de lsps para mason -> ensure_installed y nvim_cmd (aún así hay que hacer el setup)
+local myLSPs = {"lua_ls", "pyright", "jdtls"} -- Lista de lsps para mason->ensure_installed y nvim_cmd (aún así hay que hacer el setup)
 return {
     { "williamboman/mason.nvim",
         config = function()
@@ -31,9 +31,16 @@ return {
 
                     client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
                         runtime = {
-                            -- Tell the language server which version of Lua you're using
-                            -- (most likely LuaJIT in the case of Neovim)
-                            version = 'LuaJIT'
+                            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                            version = "LuaJIT",
+                        },
+                        diagnostics = {
+                            -- Get the language server to recognize the `vim` global
+                            globals = { 'vim' },
+                        },
+                        -- Do not send telemetry data containing a randomized but unique identifier
+                        telemetry = {
+                            enable = false
                         },
                         -- Make the server aware of Neovim runtime files
                         workspace = {

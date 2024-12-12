@@ -45,7 +45,7 @@ return {
             end
             },
         },
-
+ 
         prefered_link_style = "wiki",
 
         templates = {
