@@ -1,9 +1,9 @@
 return {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
     config = function ()
-    local tdc = require("todo-comments")
+        local tdc = require("todo-comments")
+        tdc.setup()
 
         vim.keymap.set("n", "]t", function()
             tdc.jump_next()
@@ -16,4 +16,3 @@ return {
         vim.keymap.set("n", "<leader>ftd", "<cmd>TodoTelescope<cr>",{desc = "find todo comments"})
     end,
 }
-

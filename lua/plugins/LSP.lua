@@ -1,70 +1,10 @@
-local myLSPs = {"lua_ls", "pyright", "jdtls"} -- Lista de lsps para mason->ensure_installed y nvim_cmd (aún así hay que hacer el setup)
 return {
-    { "williamboman/mason.nvim",
-        config = function()
-            require("mason").setup()
-        end,
-        opts = {
-            ensure_installed = myLSPs
-        }
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        dependencies = {
-            "williamboman/mason.nvim",
-            "neovim/nvim-lspconfig",
-            'hrsh7th/nvim-cmp',-- Autocompletion plugin
-        },
-    },
     {
         "neovim/nvim-lspconfig",
-        config = function()
-            require("mason-lspconfig").setup{}
-            require("lspconfig").lua_ls.setup{
-                on_init = function(client)
-                    if client.workspace_folders then
-                        local path = client.workspace_folders[1].name
-                        if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
-                            return
-                        end
-                    end
-
-                    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-                        runtime = {
-                            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                            version = "LuaJIT",
-                        },
-                        diagnostics = {
-                            -- Get the language server to recognize the `vim` global
-                            globals = { 'vim' },
-                        },
-                        -- Do not send telemetry data containing a randomized but unique identifier
-                        telemetry = {
-                            enable = false
-                        },
-                        -- Make the server aware of Neovim runtime files
-                        workspace = {
-                            checkThirdParty = false,
-                            library = {
-                                vim.env.VIMRUNTIME
-                                -- Depending on the usage, you might want to add additional paths here.
-                                -- "${3rd}/luv/library"
-                                -- "${3rd}/busted/library",
-                            }
-                        }
-                    })
-                end,
-                settings = {
-                    Lua = {}
-                }
-            }
-            require("lspconfig").pyright.setup{}
-            require("lspconfig").jdtls.setup{}
-        end,
-    },
-    {
-        'hrsh7th/nvim-cmp',-- Autocompletion plugin
         dependencies = {
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            'hrsh7th/nvim-cmp',-- Autocompletion plugin
             'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
@@ -73,25 +13,17 @@ return {
             'L3MON4D3/LuaSnip', -- Snippets plugin,
         },
         config = function()
-            -- Add additional capabilities supported by nvim-cmp
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            local lspconfig = require('lspconfig')
+            local cmp = require('cmp')
+            local cmp_lsp = require('cmp_nvim_lsp')
+            local capabilities = cmp_lsp.default_capabilities()
 
-            -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-            local servers = myLSPs
-            for _, lsp in ipairs(servers) do
-                lspconfig[lsp].setup {
-                    -- on_attach = my_custom_on_attach,
-                    capabilities = capabilities,
-                }
-            end
+            require("mason").setup({})
+            require("mason-lspconfig").setup({
+                ensure_installed = {"lua_ls", "pyright","jdtls"}
+            })
 
-            -- luasnip setup
-            local luasnip = require 'luasnip'
-
-            -- nvim-cmp setup
-            local cmp = require 'cmp'
-            cmp.setup {
+            local luasnip = require('luasnip')
+            cmp.setup{
                 snippet = {
                     expand = function(args)
                         luasnip.lsp_expand(args.body)
@@ -130,13 +62,20 @@ return {
                     { name = 'luasnip' },
                 },
             }
-        end
+            -- LSP Setups
+            require("lspconfig").lua_ls.setup({
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        runtime = { version = "LuaJIT"},
+                        diagnostics = {
+                            globals = { "vim" },
+                    }
+                  }
+                },
+            })
+            require("lspconfig").pyright.setup{ capabilities = capabilities}
+            --require("lspconfig").jdtls.setup{ capabilities = capabilities} (se encarga nvim-jdtls??)
+        end,
     },
-    --[[ TODO
-    {
-        'mfussenegger/nvim-jdtls',
-        config = function()
-        end
-    },
-    ]]--
 }
