@@ -62,6 +62,17 @@ return {
                     { name = 'luasnip' },
                 },
             }
+
+            cmp.setup.cmdline(':', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources({
+                    { name = 'path' }
+                }, {
+                        { name = 'cmdline' }
+                    }),
+                matching = { disallow_symbol_nonprefix_matching = false }
+            })
+
             -- LSP Setups
             require("lspconfig").lua_ls.setup({
                 capabilities = capabilities,
@@ -70,12 +81,12 @@ return {
                         runtime = { version = "LuaJIT"},
                         diagnostics = {
                             globals = { "vim" },
+                        }
                     }
-                  }
                 },
             })
             require("lspconfig").pyright.setup{ capabilities = capabilities}
-            --require("lspconfig").jdtls.setup{ capabilities = capabilities} (se encarga nvim-jdtls??)
+            require("lspconfig").jdtls.setup{ capabilities = capabilities} --(se encarga nvim-jdtls??)
         end,
     },
 }

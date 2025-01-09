@@ -24,3 +24,6 @@ vim.opt.incsearch = true
 vim.g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
 
 vim.opt.conceallevel = 1
+
+-- para colapsar código en función de la indentación
+vim.opt.foldmethod = "indent"

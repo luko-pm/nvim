@@ -5,7 +5,7 @@ vim.g.mapleader = ' '
 vim.keymap.set('i', 'jk','<esc>')
 
 -- File tree
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>t', vim.cmd.Ex, {desc = "File tree"})
 
 -- Things that shouldnt go to a register
 vim.keymap.set("x", "<leader>p", [["_dP]])
