@@ -27,12 +27,7 @@ return{
                     transparency = true,
                 },
             })
+            vim.cmd [[colorscheme rose-pine]]
         end,
 	},
-	{
-		"LazyVim/LazyVim",
-		opts = {
-			colorscheme = "rose-pine",
-		},
-	}
 }
