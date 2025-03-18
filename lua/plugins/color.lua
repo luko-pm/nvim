@@ -11,7 +11,7 @@ return{
 			require("rose-pine").setup({
                 variant = "main",
                 background_opacity = 0;
-                disable_italics = true,
+                disable_italics = false,
                 --disable_background = true,
                 --[[highlight_groups = {
                     TelescopeBorder = { fg = "highlight_high", bg = "none" },

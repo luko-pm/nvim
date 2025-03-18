@@ -6,7 +6,7 @@ return{
 		configs.setup({
 			ensure_installed = {
 				"java","python","markdown","markdown_inline","c","lua","vim","vimdoc","query","elixir","heex","javascript","html"
-			},
+			, "sql"},
 			sync_install = false,
 			highlight = { enable = true },
 			indent = { enable = true },

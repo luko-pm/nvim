@@ -29,7 +29,7 @@ return {
 
         completion = {
             nvim_cmp = true,
-            min_chars = 2,
+            min_chars = 0,
         },
 
         mappings = {
@@ -54,6 +54,7 @@ return {
         },
 
         -- Optional, customize how note IDs are generated given an optional title.
+        --[[ (a ver si esto arregla la cosa esa)
         ---@param title string|?
         ---@return string
         note_id_func = function(title)
@@ -73,6 +74,7 @@ return {
             end
             return tostring(os.time()) .. "-" .. suffix
         end,
+        ]]--
 
         prefered_link_style = "wiki",
 

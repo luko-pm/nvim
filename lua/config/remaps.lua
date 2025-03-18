@@ -25,3 +25,8 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 -- replace word below cursor in all the file
 vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- super mega custom hacker shit para poner acento a las letras
+-- (así es doña lo he hecho yo con mis manitas, no big deal)
+require("config.acentos")
+vim.keymap.set("n", "<leader>ñ",function()Acento()end)
+
