@@ -15,15 +15,19 @@ DD    --> cortar línea
 d     --> borrar 
 dd    --> borrar línea
 x     --> borrar caracter
-
-<leader>p  --> pegar copiando
-p          --> pegar (sin copiar)
 ]]--
+
+--[[ TODO: nada de esto funciona bien la verdad
+
+-- <leader>p  --> pegar copiando
+-- p          --> pegar (sin copiar)
+
 vim.keymap.set({'n', 'v'}, 'D', 'd')
 vim.keymap.set({'n', 'v'}, 'DD', 'dd')
 vim.keymap.set({'n', 'v'}, 'd', '"_d')
 vim.keymap.set({'n', 'v'}, 'dd', '"_dd')
 vim.keymap.set({'n', 'v'}, 'x', '"_x')
+]]--
 
 -- TODO: nada de esto funciona bien la verdad
 -- vim.keymap.set("x", "<leader>p", 'p') -- pegar y copiar
@@ -46,3 +50,5 @@ vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 require("config.acentos")
 vim.keymap.set("n", "<leader>ñ",function()Acento()end,{desc = "toggle acento"})
 
+-- Remapear @ para activar macros a <leader>q por que @ es incómodo de cojones
+vim.keymap.set("n", "<leader>q", "@")

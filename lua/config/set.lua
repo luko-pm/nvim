@@ -27,3 +27,10 @@ vim.opt.conceallevel = 1
 
 -- Idiomas e de texto.
 vim.opt.spelllang = "en,es"
+
+-- Yank Highlight
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
