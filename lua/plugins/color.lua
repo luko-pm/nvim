@@ -1,14 +1,18 @@
 return{
-	--{
-	--	"folke/tokyonight.nvim",
-	--	lazy = true,
-	--	opts = { style = "moon" },
-	--},
+    {
+        "folke/tokyonight.nvim",
+        lazy = true,
+        opts = {
+            style = "night",
+            transparent = true,
+        },
+    },
 
-	{ "rose-pine/neovim",
-		name = "rose-pine",
-		config = function()
-			require("rose-pine").setup({
+    { 
+        "rose-pine/neovim",
+        name = "rose-pine",
+        config = function()
+            require("rose-pine").setup({
                 variant = "main",
                 background_opacity = 0;
                 disable_italics = false,
@@ -27,7 +31,44 @@ return{
                     transparency = true,
                 },
             })
-            vim.cmd [[colorscheme rose-pine]]
+            --vim.cmd [[colorscheme rose-pine]]
         end,
-	},
+    },
+
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        opts = {
+            flavour = "mocha",
+            transparent_background = true,
+            float = {
+                transparent = true,
+            },
+
+            integrations = {
+                telescope = {
+                    enabled = true,
+                }
+            },
+        },
+
+        config = function(_, opts)
+            require("catppuccin").setup(opts) -- calling setup is optional
+            vim.cmd [[colorscheme catppuccin]]
+        end,
+    },
+
+    --{
+    --    "rebelot/kanagawa.nvim",
+    --},
+
+    --{
+    --    "tiagovla/tokyodark.nvim",
+    --    opts = {
+    --        transparent_background = true,
+    --    },
+    --    config = function(_, opts)
+    --        require("tokyodark").setup(opts) -- calling setup is optional
+    --    end,
+    --},
 }
