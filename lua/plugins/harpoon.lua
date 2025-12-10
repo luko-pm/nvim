@@ -4,7 +4,12 @@ return{
     dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim"},
     config = function()
         local harpoon = require("harpoon")
-        harpoon:setup()
+        harpoon:setup({
+            settings = {
+                save_on_toggle = true,
+            },
+        })
+
         vim.keymap.set("n", "<leader>hh", function() harpoon:list():add() end, {desc = "harpoon add"})
         vim.keymap.set("n", "<leader>ht", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, {desc = "harpoon toggle menu"})
 

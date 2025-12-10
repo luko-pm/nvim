@@ -1,3 +1,4 @@
+local vim = vim
 -- leader
 vim.g.mapleader = ' '
 
@@ -5,40 +6,10 @@ vim.g.mapleader = ' '
 vim.keymap.set('i', 'jk','<esc>')
 
 -- File tree
-vim.keymap.set('n', '<leader>t', vim.cmd.Ex, {desc = "File tree"})
+--vim.keymap.set('n', '<leader>t', vim.cmd.Ex, {desc = "File tree"})
+-- Ahora con oil es con -
 
---[[ Register shit
-keys  --> maps
-------------------
-D     --> cortar
-DD    --> cortar línea
-d     --> borrar 
-dd    --> borrar línea
-x     --> borrar caracter
-]]--
-
---[[ TODO: nada de esto funciona bien la verdad
-
--- <leader>p  --> pegar copiando
--- p          --> pegar (sin copiar)
-
-vim.keymap.set({'n', 'v'}, 'D', 'd')
-vim.keymap.set({'n', 'v'}, 'DD', 'dd')
-vim.keymap.set({'n', 'v'}, 'd', '"_d')
-vim.keymap.set({'n', 'v'}, 'dd', '"_dd')
-vim.keymap.set({'n', 'v'}, 'x', '"_x')
-]]--
-
--- TODO: nada de esto funciona bien la verdad
--- vim.keymap.set("x", "<leader>p", 'p') -- pegar y copiar
--- vim.keymap.set("x", "p", [["_dP]]) -- pegar sin copiar
--- vim.keymap.set({'n', 'x'}, 'c', '"xc')
-
--- <leader>y --> to '+' register (system clipboard)
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-
--- Movign lines
+-- Moving lines
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
@@ -52,3 +23,31 @@ vim.keymap.set("n", "<leader>ñ",function()Acento()end,{desc = "toggle acento"})
 
 -- Remapear @ para activar macros a <leader>q por que @ es incómodo de cojones
 vim.keymap.set("n", "<leader>q", "@")
+
+-- Moverse entre splits
+vim.keymap.set("n", "<A-h>", "<C-w>h")
+vim.keymap.set("n", "<A-j>", "<C-w>j")
+vim.keymap.set("n", "<A-k>", "<C-w>k")
+vim.keymap.set("n", "<A-l>", "<C-w>l")
+-- En instert
+vim.keymap.set("i", "<A-h>", "<Esc><C-w>h")
+vim.keymap.set("i", "<A-j>", "<Esc><C-w>j")
+vim.keymap.set("i", "<A-k>", "<Esc><C-w>k")
+vim.keymap.set("i", "<A-l>", "<Esc><C-w>l")
+-- En terminal
+vim.keymap.set("t", "<A-h>", [[<C-\><C-N><C-w>h]])
+vim.keymap.set("t", "<A-j>", [[<C-\><C-N><C-w>j]])
+vim.keymap.set("t", "<A-k>", [[<C-\><C-N><C-w>k]])
+vim.keymap.set("t", "<A-l>", [[<C-\><C-N><C-w>l]])
+
+-- Nueva línea sin salir de normal mode
+vim.keymap.set("n", "<CR-o>", "o<esc>", {desc = "línea vacía debajo"})
+vim.keymap.set("n", "<S-CR-o>", "O<esc>", {desc = "línea vacía encima"})
+
+-- Esc para salir de terminal-mode
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {desc = "salir de modo terminal"})
+
+-- Para que funcione lo de el universal clipboard con la config de hyprland. (ver .config/hypr/bindings/clipboard.conf)
+vim.keymap.set({"n", "v"}, "<C-Insert>", [["*y]])
+--vim.keymap.set({"n", "v"}, "<S-Insert>", [["+p]]) -- esto no hace falta, funciona solo
+
