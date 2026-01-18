@@ -38,14 +38,12 @@ return{
             -- end
 
 
-
-
-
             -- ????? esto es de TJ. TODO: estudiar setup de obsidian + nvim TJ
             -- -- Don't do LSP stuff if we're in Obsidian Edit mode
             -- if vim.g.obsidian then
             --     return
             -- end
+
 
             require("fidget").setup({})
 
@@ -156,7 +154,9 @@ return{
                     -- { name = "copilot", group_index = 2 },
                     { name = 'luasnip' },
                     { name = 'nvim_lsp' },
-                    { name = 'buffer' },
+                    --Desactivado temporalmente para escribir agusto.
+                    --TODO: Configurar bien despues de exámenes
+                    --{ name = 'buffer' },
                     { name = 'path' },
                 })
             })

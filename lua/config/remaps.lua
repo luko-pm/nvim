@@ -51,3 +51,5 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {desc = "salir de modo terminal"})
 vim.keymap.set({"n", "v"}, "<C-Insert>", [["*y]])
 --vim.keymap.set({"n", "v"}, "<S-Insert>", [["+p]]) -- esto no hace falta, funciona solo
 
+-- Lo de arriba como que no va así que pongo para pegar normal en insert (como en obsidian)
+vim.keymap.set("i", "<C-v>", '<esc>"+p`]a')
