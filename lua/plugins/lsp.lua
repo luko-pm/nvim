@@ -31,6 +31,16 @@ return{
         },
 
         config = function ()
+
+            -- DESACTIVADO TEMPORALMENTE POR QUE TENGO QUE ESTUDIAR Y ME MOLESTA, CONFIGURALO BIEN YA COÑO JODER
+            -- if true then
+            --     return
+            -- end
+
+
+
+
+
             -- ????? esto es de TJ. TODO: estudiar setup de obsidian + nvim TJ
             -- -- Don't do LSP stuff if we're in Obsidian Edit mode
             -- if vim.g.obsidian then
@@ -65,7 +75,7 @@ return{
 
                     --['<CR>'] = cmp.mapping.confirm({ select = true }),  -- Accept currently selected item. 
                     --Set `select` to `false` to only confirm explicitly selected items.
-                    
+
                     -- Aceptar
                     ["<C-y>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
@@ -82,6 +92,7 @@ return{
                         end
                     end, { "i", "s" }),
 
+                    --[[
                     ['<CR>'] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             if luasnip.expandable() then
@@ -96,6 +107,7 @@ return{
                             fallback()
                         end
                     end, { "i", "s" }),
+                    ]]--
 
                     -- Siguiente 
                     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -177,7 +189,7 @@ return{
                 capabilities = capabilities
             })
             vim.lsp.enable('lua_ls')
-            
+
             vim.lsp.config('hyprls', {
                 capabilities = capabilities
             })

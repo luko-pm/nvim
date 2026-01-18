@@ -6,6 +6,8 @@ vim.opt.number = true
 
 vim.opt.scrolloff = 5
 
+vim.opt.linebreak = true
+
 -- Window borders
 vim.opt.winborder = "rounded"
 
@@ -19,9 +21,14 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
--- Folding
---vim.opt.foldmethod = "expr"
+-- Folding → Todas estas opciones hacen que esté todo foldeado al entrar en un archivo
 --vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+--vim.opt.foldmethod = "expr"
+--
+--vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+--vim.wo.foldmethod = "expr"
+--
+--vim.g.markdown_folding = 1
 
 --vim.opt.hlsearch = false
 vim.opt.incsearch = true
