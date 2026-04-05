@@ -44,6 +44,18 @@ return {
                 format = "({{backlinks}} backlinks)", -- limit to backlinks
             },
 
+            completion = (function()
+                local has_nvim_cmp, _ = pcall(require, "cmp")
+                local has_blink = pcall(require, "blink.cmp")
+                return {
+                    nvim_cmp = has_nvim_cmp and not has_blink,
+                    blink = has_blink,
+                    min_chars = 0,
+                    match_case = true,
+                    create_new = true,
+                }
+            end)(),
+
             picker = {
                 name = "telescope.nvim",
                 note_mappings = {

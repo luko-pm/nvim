@@ -13,7 +13,7 @@ return{
                 "mason-org/mason-lspconfig.nvim",
                 dependencies = {"mason-org/mason.nvim"},
                 opts = {
-                    ensure_installed = {"lua_ls",},
+                    ensure_installed = {"lua_ls","hls"},
                 }
             },
             "onsails/lspkind.nvim",
@@ -31,12 +31,6 @@ return{
         },
 
         config = function ()
-
-            -- DESACTIVADO TEMPORALMENTE POR QUE TENGO QUE ESTUDIAR Y ME MOLESTA, CONFIGURALO BIEN YA COÑO JODER
-            -- if true then
-            --     return
-            -- end
-
 
             -- ????? esto es de TJ. TODO: estudiar setup de obsidian + nvim TJ
             -- -- Don't do LSP stuff if we're in Obsidian Edit mode
@@ -154,9 +148,11 @@ return{
                     -- { name = "copilot", group_index = 2 },
                     { name = 'luasnip' },
                     { name = 'nvim_lsp' },
-                    --Desactivado temporalmente para escribir agusto.
-                    --TODO: Configurar bien despues de exámenes
-                    --{ name = 'buffer' },
+
+                    --Comentar esta linea para desactivar temporalmente para escribir agusto.
+                    --TODO: Configurar bien para que no se active en documentos de texto
+                    { name = 'buffer' },
+
                     { name = 'path' },
                 })
             })
