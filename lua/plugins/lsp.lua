@@ -32,11 +32,6 @@ return{
 
         config = function ()
 
-            -- ????? esto es de TJ. TODO: estudiar setup de obsidian + nvim TJ
-            -- -- Don't do LSP stuff if we're in Obsidian Edit mode
-            -- if vim.g.obsidian then
-            --     return
-            -- end
 
 
             require("fidget").setup({})
@@ -151,7 +146,14 @@ return{
 
                     --Comentar esta linea para desactivar temporalmente para escribir agusto.
                     --TODO: Configurar bien para que no se active en documentos de texto
-                    { name = 'buffer' },
+                    --
+                    {
+                        name = function()
+                            if vim.g.obsidianMode == nil then
+                                return 'buffer'
+                            end
+                        end
+                    },
 
                     { name = 'path' },
                 })

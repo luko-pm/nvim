@@ -1,12 +1,12 @@
 return {
     "obsidian-nvim/obsidian.nvim",
     version = "*", -- use latest release, remove to use latest commit
-    ft = "markdown",
+    -- ft = "markdown",
 
-    event = {
-        "BufReadPre /home/luko/Vault/*.md",
-        "BufNewFile /home/luko/Vault/*.md",
-    },
+    -- event = {
+    --     "BufReadPre /home/luko/Vault/*.md",
+    --     "BufNewFile /home/luko/Vault/*.md",
+    -- },
 
     dependencies = {
         "nvim-lua/plenary.nvim",
@@ -16,15 +16,19 @@ return {
     },
 
     config = function()
+
+        if vim.g.obsidianMode == nil then
+            return
+        end
+
+        vim.keymap.set('n','j','gj')
+        vim.keymap.set('n','k','gk')
+
         local obsidian = require("obsidian")
         obsidian.setup {
             legacy_commands = false,
-            workspaces = {
-                {
-                    name = "Vault",
-                    path = "~/Vault",
-                },
-            },
+
+            workspaces = { { name = "Vault", path = "~/Vault", }, },
 
             notes_subdir = "01_Inbox",
             new_notes_location = "notes_subdir",
