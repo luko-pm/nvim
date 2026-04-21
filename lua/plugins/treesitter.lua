@@ -1,10 +1,9 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    branch = 'master',
     lazy = false,
     build = ":TSUpdate",
     config = function()
-        require'nvim-treesitter.configs'.setup {
+        require'nvim-treesitter'.setup {
             ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "hyprlang" },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
