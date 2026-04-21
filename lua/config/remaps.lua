@@ -41,8 +41,8 @@ vim.keymap.set("t", "<A-k>", [[<C-\><C-N><C-w>k]])
 vim.keymap.set("t", "<A-l>", [[<C-\><C-N><C-w>l]])
 
 -- Nueva línea sin salir de normal mode → Al parecer es con '['/']' + Espacio
---vim.keymap.set("n", "<CR-o>", "o<esc>", {desc = "línea vacía debajo"})
---vim.keymap.set("n", "<S-CR-o>", "O<esc>", {desc = "línea vacía encima"})
+vim.keymap.set("n", "<C-o>", "o<esc>", {desc = "línea vacía debajo"})
+vim.keymap.set("n", "<S-C-o>", "O<esc>", {desc = "línea vacía encima"})
 
 -- Esc para salir de terminal-mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {desc = "salir de modo terminal"})
