@@ -32,8 +32,6 @@ return{
 
         config = function ()
 
-
-
             require("fidget").setup({})
 
             local cmp = require('cmp')
@@ -183,16 +181,14 @@ return{
             local capabilities = cmp_lsp.default_capabilities()
 
             -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-            vim.lsp.config('lua_ls', {
-                capabilities = capabilities
-            })
+            vim.lsp.config('lua_ls', { capabilities = capabilities })
             vim.lsp.enable('lua_ls')
 
-            vim.lsp.config('hyprls', {
-                capabilities = capabilities
-            })
-
+            vim.lsp.config('hyprls', { capabilities = capabilities })
             vim.lsp.enable('hyprls')
+
+            vim.lsp.config('haskell', { capabilities = capabilities })
+            vim.lsp.enable('haskell')
 
         end
     }
