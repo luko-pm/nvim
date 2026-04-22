@@ -1,6 +1,9 @@
 local vim = vim
 -- leader
 vim.g.mapleader = ' '
+vim.g.maplocalleader = 'ñ'
+
+vim.keymap.set('i', '<localleader>j','fufa')
 
 -- jk -> esc
 vim.keymap.set('i', 'jk','<esc>')
