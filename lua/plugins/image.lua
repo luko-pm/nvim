@@ -1,13 +1,10 @@
 return{
     "3rd/image.nvim",
-    -- version = "1.1.0", -- less braking, check molten docs for last supportd version
-    build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
 
-        --[[
-    opts = {
-        processor = "magick_cli",
-    }
-        ]]--
+    -- ↓ Esto hace que de error de algo de lo de magick rocks
+    -- version = "1.1.0", -- less braking, check molten docs for last supportd version
+
+    build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
 
     config = function()
         require("image").setup({

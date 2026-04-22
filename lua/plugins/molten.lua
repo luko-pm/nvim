@@ -1,11 +1,16 @@
+vim.g.maplocalleader = 'ñ'
 return{
     {
         "benlubas/molten-nvim",
         version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
         build = ":UpdateRemotePlugins",
-        dependencies = { "3rd/image.nvim" },
+
+        dependencies = { 
+            "3rd/image.nvim",
+            "GCBallesteros/jupytext.nvim",
+        },
+
         init = function()
-            vim.g.python3_host_prog=vim.fn.expand("~/.virtualenvs/neovim_jupyter/bin/python3")
             vim.g.molten_image_provider = "image.nvim"
             vim.g.molten_output_win_max_height = 12
 
@@ -43,14 +48,62 @@ return{
     },
     {
         "quarto-dev/quarto-nvim",
+        ft = {"quatro", "markdown"},
         dependencies = {
             "jmbuhr/otter.nvim",
             "nvim-treesitter/nvim-treesitter",
         },
         config = function ()
-            require("quarto").setup{
 
-            }
+            local quarto = require("quarto")
+            quarto.setup({
+                lspFeatures = {
+                    -- NOTE: put whatever languages you want here:
+                    languages = { "python", },
+                    chunks = "all",
+                    diagnostics = {
+                        enabled = true,
+                        triggers = { "BufWritePost" },
+                    },
+                    completion = {
+                        enabled = true,
+                    },
+                },
+                keymap = {
+                    -- NOTE: setup your own keymaps:
+                    hover = "H",
+                    definition = "gd",
+                    rename = "<leader>rn",
+                    references = "gr",
+                    format = "<leader>gf",
+                },
+                codeRunner = {
+                    enabled = true,
+                    default_method = "molten",
+                },
+            })
+
+            local runner = require("quarto.runner")
+
+            vim.keymap.set("n", "<localleader>rc", runner.run_cell,  { desc = "run cell", silent = true })
+            vim.keymap.set("n", "<localleader>ra", runner.run_above, { desc = "run cell and above", silent = true })
+            vim.keymap.set("n", "<localleader>rA", runner.run_all,   { desc = "run all cells", silent = true })
+            vim.keymap.set("n", "<localleader>rl", runner.run_line,  { desc = "run line", silent = true })
+            vim.keymap.set("v", "<localleader>r",  runner.run_range, { desc = "run visual range", silent = true })
+            vim.keymap.set("n", "<localleader>RA", function() runner.run_all(true) end, { desc = "run all cells of all languages", silent = true })
+
         end
+    },
+    {
+        "GCBallesteros/jupytext.nvim",
+        config = function()
+            -- Depending on your nvim distro or config you may need to make the loading not lazy
+            -- lazy=false,
+            require("jupytext").setup({
+                style = "markdown",
+                output_extension = "md",
+                force_ft = "markdown",
+            })
+        end
+        }
     }
-}
