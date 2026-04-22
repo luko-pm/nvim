@@ -1,4 +1,5 @@
 return{
+    -- terminal chi
       'akinsho/toggleterm.nvim',
       version = "*",
       -- opts = {},

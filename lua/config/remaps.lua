@@ -3,8 +3,6 @@ local vim = vim
 vim.g.mapleader = ' '
 vim.g.maplocalleader = 'ñ'
 
-vim.keymap.set('i', '<localleader>j','fufa')
-
 -- jk -> esc
 vim.keymap.set('i', 'jk','<esc>')
 
@@ -15,9 +13,6 @@ vim.keymap.set('i', 'jk','<esc>')
 -- Moving lines
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
-
--- replace word below cursor in all the file
-vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- super mega custom hacker shit para poner acento a las letras
 -- (así es doña lo he hecho yo con mis manitas, no big deal)

@@ -48,7 +48,7 @@ return{
             "nvim-treesitter/nvim-treesitter",
         },
         config = function ()
-            require("quatro").setup{
+            require("quarto").setup{
 
             }
         end
