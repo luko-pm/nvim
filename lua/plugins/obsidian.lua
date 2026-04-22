@@ -41,6 +41,12 @@ return {
                 end
             end,
 
+            templates = {
+                folder = "templates",
+                date_format = "%d-%m-%Y",
+                time_format = "%H:%M",
+            },
+
             footer = {
                 enabled = false,
                 separator = "", -- insert a blank line
