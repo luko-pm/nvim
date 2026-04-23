@@ -7,6 +7,6 @@ return {
 
         treesitter.setup ({})
 
-        treesitter.install({ "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "hyprlang" })
+        treesitter.install({ "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "hyprlang", "java", "python" })
     end,
 }
